@@ -1,0 +1,82 @@
+<%- include("partials/header") -%>
+
+<div id="top-container">
+  <script>
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+  <h1>Welcome to the World of Tedtube <svg width="1rem" height="1rem" viewBox="0 0 16 16" class="bi bi-camera-video-fill camera" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2.667 3h6.666C10.253 3 11 3.746 11 4.667v6.666c0 .92-.746 1.667-1.667 1.667H2.667C1.747 13 1 12.254 1 11.333V4.667C1 3.747 1.746 3 2.667 3z" />
+      <path d="M7.404 8.697l6.363 3.692c.54.313 1.233-.066 1.233-.697V4.308c0-.63-.693-1.01-1.233-.696L7.404 7.304a.802.802 0 0 0 0 1.393z" </svg>! <br> I'm CompoundShade!<br> And my brother is
+        DayDream! <br> Also my sister is Panda !
+  </h1>
+  <h2>Tedtube is a fictional world made of stuffed animals!</h2>
+  <h2>There are many characters out there!</h2>
+  <h2>Tell us your stuffed animal and we just might make a story about it!</h2>
+  <h5>Also we honor blue!</h5>
+  <div class="glow">BLUE</div>
+</div>
+<div id="middle-container">
+  <h2>✧/ᐠ-ꞈ-ᐟ\</h2>
+  <h2> Katty welcomes you!</h2>
+  <p>and doggy ∪･ｪ･∪</p>
+  <p>Hi I'm Poley Kid ʕ　·㉨·ʔ</p>
+  <h5>This is our house! I think...</h5>
+  <h3>Is this just a website?? (/-(ｴ)-＼)</h3>
+  <p class="hello">AM I STUCK HERE FOREVER????</p>
+  <p class="hello">NOOOOOOOO(／(ｴ)＼)</p>
+  <p>*sniffs*</p>
+  <p>Okay I shall give you a story... </p>
+  <p>Okey so my uncle Mr. Frenchfries is actually called Poley so, basically that's where I got my name.</p>
+  <p>There you got your story.</p>
+  <p>I am going to make Duckie Boi tell you all the stories. Which I will only narrarate if Duckie Boi calls me...</p>
+  <p> I shall now rest in peace. ─=≡Σ((( つ•̀ω•́)つ ( ˘ω˘ )</p>
+</div>
+<div id="bottom-container">
+  <br>
+  <h3>DUCKIE BOI IS HERE!!!🦆🦆🦆</h3>
+  <h3>With some music!</h3>
+  <h3>ヾ(⌐■_■)ノ♪</h3>
+  <h3>You know what just hear these musics. </h3>
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <iframe src="https://open.spotify.com/embed/playlist/3oRLWrJ1Q7SzSuwAy2of2j" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+      <div class="carousel-item">
+        <iframe src="https://open.spotify.com/embed/playlist/4J06dynOqQ9PxqbBiQGuCG" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+      <div class="carousel-item">
+        <iframe src="https://open.spotify.com/embed/playlist/7jETnihnrtAhAmkBhxczVl" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+      <div class="carousel-item">
+        <iframe src="https://open.spotify.com/embed/playlist/6fRkt1NgOfeVu1nkSexxrF" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+      <div class="carousel-item">
+        <iframe src="https://open.spotify.com/embed/playlist/6lzsl6pRZzI0yNojvcgDfN" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+    </div>
+    <a class="carousel-control-prev " href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+  <%- include("partials/footer") -%>
