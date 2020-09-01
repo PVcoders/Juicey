@@ -192,6 +192,36 @@ app.get("/list/:customListName", function(req, res) {
   })
 })
 
+app.post("/delete", function(req, res) {
+  const checkedItemId = req.body.checkbox;
+  const listName = req.body.listName;
+
+  if (listName === "Today") {
+    Item.findByIdAndRemove(checkedItemId, function(err) {
+      if (!err) {
+        console.log("Successfully deleted checked item.");
+        res.redirect("/list");
+      }
+    });
+  } else {
+    List.findOneAndUpdate({
+      name: listName
+    }, {
+      $pull: {
+        items: {
+          _id: checkedItemId
+        }
+      }
+    }, function(err, foundList) {
+      if (!err) {
+        res.redirect("/list/" + listName);
+      }
+    });
+  }
+
+
+});
+
 app.get("/", function(req, res){
   res.render("home");
 })
