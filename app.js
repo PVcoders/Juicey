@@ -25,7 +25,6 @@ mongoose.connect("mongodb+srv://admin-juiceybird:BBUbZLsAvL4IV8y6@cluster0.vle6t
 })
 
 mongoose.set('useFindAndModify', false);
-mongoose.set("useCreateIndex", true);
 
 const itemsSchema = new mongoose.Schema({
   name: String
@@ -48,7 +47,7 @@ const userSchema = new mongoose.Schema({
   secret: String
 });
 
-const User = new mongoose.model("User", userSchema);
+const User = new mongoose.model("User", userSchema)
 const List = mongoose.model("List", listSchema)
 const Item = mongoose.model("Item", itemsSchema);
 const Post = mongoose.model("Post", postSchema);
@@ -192,75 +191,6 @@ app.get("/list/:customListName", function(req, res) {
     }
   })
 })
-
-app.get("/texts", function(req, res) {
-  User.find({
-    "secret": {
-      $ne: null
-    }
-  }, function(err, foundUsers) {
-    if (err) {
-      console.log(err);
-    } else {
-      if (foundUsers) {
-        res.render("secrets", {
-          usersWithSecrets: foundUsers
-        });
-      }
-    }
-  });
-});
-
-app.get("/submit", function(req, res) {
-    res.render("submit");
-});
-
-app.post("/submit", function(req, res) {
-  const submittedSecret = req.body.secret;
-
-  User.findById(req.user.id, function(err, foundUser) {
-    if (err) {
-      console.log(err);
-    } else {
-      if (foundUser) {
-        foundUser.secret = submittedSecret;
-        foundUser.save(function() {
-          res.redirect("/texts");
-        });
-      }
-    }
-  });
-});
-
-app.post("/delete", function(req, res) {
-  const checkedItemId = req.body.checkbox;
-  const listName = req.body.listName;
-
-  if (listName === "Today") {
-    Item.findByIdAndRemove(checkedItemId, function(err) {
-      if (!err) {
-        console.log("Successfully deleted checked item.");
-        res.redirect("/list");
-      }
-    });
-  } else {
-    List.findOneAndUpdate({
-      name: listName
-    }, {
-      $pull: {
-        items: {
-          _id: checkedItemId
-        }
-      }
-    }, function(err, foundList) {
-      if (!err) {
-        res.redirect("/list/" + listName);
-      }
-    });
-  }
-
-
-});
 
 app.get("/", function(req, res){
   res.render("home");
