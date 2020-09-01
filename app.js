@@ -191,7 +191,7 @@ app.get("/list/:customListName", function(req, res) {
   })
 })
 
-app.get("/secrets", function(req, res) {
+app.get("/texts", function(req, res) {
   User.find({
     "secret": {
       $ne: null
@@ -223,7 +223,7 @@ app.post("/submit", function(req, res) {
       if (foundUser) {
         foundUser.secret = submittedSecret;
         foundUser.save(function() {
-          res.redirect("/secrets");
+          res.redirect("/texts");
         });
       }
     }
