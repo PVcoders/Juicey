@@ -260,9 +260,9 @@ app.post("/delete", function(req, res) {
 
 });
 
-app.get("/") {
+app.get("/", function(req, res){
   res.render("home");
-}
+})
 
 app.get("/about", function(req, res) {
   res.render("about");
