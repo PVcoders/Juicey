@@ -25,6 +25,7 @@ mongoose.connect("mongodb+srv://admin-juiceybird:BBUbZLsAvL4IV8y6@cluster0.vle6t
 })
 
 mongoose.set('useFindAndModify', false);
+mongoose.set("useCreateIndex", true);
 
 const itemsSchema = new mongoose.Schema({
   name: String
@@ -47,6 +48,7 @@ const userSchema = new mongoose.Schema({
   secret: String
 });
 
+const User = new mongoose.model("User", userSchema);
 const List = mongoose.model("List", listSchema)
 const Item = mongoose.model("Item", itemsSchema);
 const Post = mongoose.model("Post", postSchema);
