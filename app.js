@@ -1,17 +1,11 @@
 //jshint esversion:6
 
-require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const https = require("https");
 const _ = require("lodash");
 const mongoose = require("mongoose");
-const session = require('express-session');
-const passport = require("passport");
-const passportLocalMongoose = require("passport-local-mongoose");
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const findOrCreate = require('mongoose-findorcreate');
 
 const homeStartingContent = "WELCOME TO THE BLOG OF TEDTUBE. I WILL POST UPDATES NOW AND THEN.";
 
@@ -25,29 +19,12 @@ app.set('view engine', 'ejs');
 
 app.use(express.static("public"));
 
-app.use(session({
-  secret: "Our little secret.",
-  resave: false,
-  saveUninitialized: false
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
 mongoose.connect("mongodb+srv://admin-juiceybird:BBUbZLsAvL4IV8y6@cluster0.vle6t.mongodb.net/itemsDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
 
 mongoose.set('useFindAndModify', false);
-mongoose.set("useCreateIndex", true);
-
-const userSchema = new mongoose.Schema({
-  email: String,
-  password: String,
-  googleId: String,
-  secret: String
-});
 
 const itemsSchema = new mongoose.Schema({
   name: String
@@ -66,8 +43,9 @@ const postSchema = new mongoose.Schema({
 
 });
 
-userSchema.plugin(passportLocalMongoose);
-userSchema.plugin(findOrCreate);
+const userSchema = new mongoose.Schema({
+  secret: String
+});
 
 const User = new mongoose.model("User", userSchema)
 const List = new mongoose.model("List", listSchema)
@@ -87,39 +65,10 @@ const item3 = new Item({
 })
 
 const item4 = new Item({
-  name: "If you want to go to the search bar at the end do / and then what ever you want for the title of the to do list you will generate by hitting enter or return. You do not need to capitalize your list title."
+  name: "If you want to go to the search bar at the end do / and then what ever you want for the title of your todolist."
 })
 
 const defaultItems = [item1, item2, item3, item4]
-
-passport.use(User.createStrategy());
-
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
-
-passport.use(new GoogleStrategy({
-    clientID: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://tedtube.herokuapp.com/auth/google/secrets",
-    userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
-  },
-  function(accessToken, refreshToken, profile, cb) {
-    console.log(profile);
-
-    User.findOrCreate({
-      googleId: profile.id
-    }, function(err, user) {
-      return cb(err, user);
-    });
-  }
-));
 
 app.route("/list")
 
@@ -243,113 +192,6 @@ app.get("/list/:customListName", function(req, res) {
   })
 })
 
-app.get("/auth/google",
-  passport.authenticate('google', {
-    scope: ["profile"]
-  })
-);
-
-app.get("/auth/google/secrets",
-  passport.authenticate('google', {
-    failureRedirect: "/login"
-  }),
-  function(req, res) {
-    // Successful authentication, redirect to secrets.
-    res.redirect("/secrets");
-  });
-
-app.get("/login", function(req, res) {
-  res.render("login");
-});
-
-app.get("/register", function(req, res) {
-  res.render("register");
-});
-
-app.get("/secrets", function(req, res) {
-  User.find({
-    "secret": {
-      $ne: null
-    }
-  }, function(err, foundUsers) {
-    if (err) {
-      console.log(err);
-    } else {
-      if (foundUsers) {
-        res.render("secrets", {
-          usersWithSecrets: foundUsers
-        });
-      }
-    }
-  });
-});
-
-app.get("/submit", function(req, res) {
-  if (req.isAuthenticated()) {
-    res.render("submit");
-  } else {
-    res.redirect("/login");
-  }
-});
-
-app.post("/submit", function(req, res) {
-  const submittedSecret = req.body.secret;
-
-  User.findById(req.user.id, function(err, foundUser) {
-    if (err) {
-      console.log(err);
-    } else {
-      if (foundUser) {
-        foundUser.secret = submittedSecret;
-        foundUser.save(function() {
-          res.redirect("/secrets");
-        });
-      }
-    }
-  });
-});
-
-app.get("/logout", function(req, res) {
-  req.logout();
-  res.redirect("/");
-});
-
-app.post("/register", function(req, res) {
-
-  User.register({
-    username: req.body.username
-  }, req.body.password, function(err, user) {
-    if (err) {
-      console.log(err);
-      res.redirect("/register");
-    } else {
-      passport.authenticate("local")(req, res, function() {
-        res.redirect("/secrets");
-      });
-    }
-  });
-
-});
-
-app.post("/login", function(req, res) {
-
-  const user = new User({
-    username: req.body.username,
-    password: req.body.password
-  });
-
-  req.login(user, function(err) {
-    if (err) {
-      console.log(err);
-    } else {
-      passport.authenticate("local")(req, res, function() {
-        res.redirect("/secrets");
-      });
-    }
-  });
-
-});
-
 app.post("/delete", function(req, res) {
   const checkedItemId = req.body.checkbox;
   const listName = req.body.listName;
@@ -380,7 +222,7 @@ app.post("/delete", function(req, res) {
 
 });
 
-app.get("/", function(req, res) {
+app.get("/", function(req, res){
   res.render("home");
 })
 
