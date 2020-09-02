@@ -3,7 +3,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
-const https = require("https");
 const _ = require("lodash");
 const mongoose = require("mongoose");
 
@@ -48,9 +47,9 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = new mongoose.model("User", userSchema)
-const List = new mongoose.model("List", listSchema)
-const Item = new mongoose.model("Item", itemsSchema);
-const Post = new mongoose.model("Post", postSchema);
+const List = mongoose.model("List", listSchema)
+const Item = mongoose.model("Item", itemsSchema);
+const Post = mongoose.model("Post", postSchema);
 
 const item1 = new Item({
   name: "Welcome to your to do list!"
@@ -65,7 +64,7 @@ const item3 = new Item({
 })
 
 const item4 = new Item({
-  name: "If you want to go to the search bar at the end do / and then what ever you want for the title of your todolist."
+  name: "If you want to go to the search bar at the end do / and then what ever you want for the title of the to do list you will generate by hitting enter or return. You do not need to capitalize your list title."
 })
 
 const defaultItems = [item1, item2, item3, item4]
