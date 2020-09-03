@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
+const React = require("react");
+const ReactDOM = require("react-dom");
 
 const homeStartingContent = "WELCOME TO THE BLOG OF TEDTUBE. I WILL POST UPDATES NOW AND THEN.";
 
@@ -85,7 +87,7 @@ app.route("/list")
         res.redirect("/list");
       } else {
         res.render("list", {
-          listTitle: "Today",
+          listTitle: "Change this title!",
           newListItems: foundItems
         });
       }
@@ -162,7 +164,7 @@ app.get("/posts/:postId", function(req, res) {
 });
 
 app.get("/list/:customListName", function(req, res) {
-  const customListName = "/list/" + _.capitalize(req.params.customListName);
+  const customListName =  _.capitalize(req.params.customListName);
 
   List.findOne({
     name: customListName
@@ -176,7 +178,7 @@ app.get("/list/:customListName", function(req, res) {
         });
 
         list.save();
-        res.redirect(customListName)
+        res.redirect("/list/" + customListName)
       } else {
         //show an existing list
 
