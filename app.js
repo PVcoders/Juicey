@@ -1,5 +1,3 @@
-//jshint esversion:6
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -87,7 +85,7 @@ app.route("/list")
         res.redirect("/list");
       } else {
         res.render("list", {
-          listTitle: "Change this title!",
+          listTitle: "Today",
           newListItems: foundItems
         });
       }
@@ -171,7 +169,6 @@ app.get("/list/:customListName", function(req, res) {
   }, function(err, foundList) {
     if (!err) {
       if (!foundList) {
-        //Create a new list
         const list = new List({
           name: customListName,
           items: defaultItems
@@ -180,8 +177,6 @@ app.get("/list/:customListName", function(req, res) {
         list.save();
         res.redirect("/list/" + customListName)
       } else {
-        //show an existing list
-
         res.render("list", {
           listTitle: foundList.name,
           newListItems: foundList.items
