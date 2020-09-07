@@ -3,16 +3,17 @@
 }
 
 html, body {
-  background-color: #E8ECEF;
+  background-color: #00adb5;
   font-family: 'helvetica neue';
   height: 100%;
   width: 100%;
   scroll-behavior: smooth;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
 h1 {
   padding: 5%;
-  color: #83afa6;
+  color: #fff;
 }
 
 h2, h3, h4, h5, h6 {
@@ -99,6 +100,11 @@ footer {
   border-radius: 50%;
   color: black;
   font-weight: 500;
+}
+
+.jumbotron {
+  background-color: #00adb5;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
 .btn-outline-success {
