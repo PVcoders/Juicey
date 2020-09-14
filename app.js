@@ -3,8 +3,6 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
-const React = require("react");
-const ReactDOM = require("react-dom");
 
 const homeStartingContent = "WELCOME TO THE BLOG OF TEDTUBE. I WILL POST UPDATES NOW AND THEN.";
 
