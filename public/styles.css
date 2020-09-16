@@ -89,8 +89,7 @@ footer {
 
 .footer-link:hover {
   animation-name: shake;
-  -webkit-animation: shake;
-  -moz-animation: shake;
+  animation: shake;
   animation-duration: 3s;
   text-decoration: none;
   animation-iteration-count: infinite;
