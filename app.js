@@ -220,10 +220,6 @@ app.get("/", function(req, res){
   res.render("home");
 })
 
-app.get("/about", function(req, res) {
-  res.render("about");
-});
-
 app.get("/tedtube", function(req, res) {
   res.render("tedtube");
 });
@@ -231,6 +227,10 @@ app.get("/tedtube", function(req, res) {
 app.get("/credits", function(req, res) {
   res.render("credits");
 });
+
+// app.get("/about", function(req, res) {
+//   res.render("about");
+// });
 
 app.get("/contact", function(req, res) {
   res.render("contact");
