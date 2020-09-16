@@ -450,30 +450,3 @@ footer {
     transform: rotate(360deg);
   }
 }
-
-@-webkit-keyframes glow {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00FFFF, 0 0 40px #00FFFF, 0 0 50px #00FFFF, 0 0 60px #00FFFF, 0 0 70px #00FFFF;
-  }
-
-  to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #7FFFD4, 0 0 40px #7FFFD4, 0 0 50px #7FFFD4, 0 0 60px #7FFFD4, 0 0 70px #7FFFD4, 0 0 80px #7FFFD4;
-  }
-}
-
-::-webkit-scrollbar {
-  width: 20px;
-  border-radius: 5%;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #29a19c;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #EFEFEF;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: DimGrey
-}
