@@ -228,9 +228,9 @@ app.get("/credits", function(req, res) {
   res.render("credits");
 });
 
-// app.get("/about", function(req, res) {
-//   res.render("about");
-// });
+app.get("/about", function(req, res) {
+  res.render("about");
+});
 
 app.get("/contact", function(req, res) {
   res.render("contact");
