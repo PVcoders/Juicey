@@ -80,8 +80,7 @@ footer {
 }
 
 .wordDocument {
-  padding: 0 15%;
-  width: 1500px;
+  width: 100%;
 }
 
 .glow {
@@ -454,4 +453,16 @@ footer {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.white {
+  color: #fff;
+}
+
+.white:hover {
+  color: #fff;
+}
+
+.smallFont {
+  font-size: 1rem;
 }
