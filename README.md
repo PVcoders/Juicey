@@ -1,6 +1,6 @@
 # Tedtube
 
-![Tedtube Favicon] (public/icons/favicon.ico)
+![Tedtube Favicon](public/icons/favicon.ico)
 
 # BACKEND-FRONTEND
 
