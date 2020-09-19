@@ -79,6 +79,11 @@ footer {
   opacity: 1;
 }
 
+.wordDocument {
+  padding: 0 10%;
+  width: 1000px;
+}
+
 .glow {
   font-size: 80px;
   color: #fff;
@@ -104,6 +109,7 @@ footer {
 .jumbotron {
   background-color: #00adb5;
   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+  opacity: 0.8;
 }
 
 .btn-outline-success {
