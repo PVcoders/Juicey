@@ -14,6 +14,8 @@ This website uses the backend and the frontend.
 
 # For Mac
 
+git clone https://github.com/Compound-codes/Juicey.git
+
 Unzip your file. 
 cd into your folder where my project is.
 if you have it; nodemon app.js
