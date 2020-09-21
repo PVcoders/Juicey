@@ -4,15 +4,12 @@ const _ = require("lodash");
 const mongoose = require("mongoose");
 
 const homeStartingContent = "WELCOME TO THE BLOG OF TEDTUBE. I WILL POST UPDATES NOW AND THEN.";
-
 const app = express();
-
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 
 app.set('view engine', 'ejs');
-
 app.use(express.static("public"));
 
 mongoose.connect("mongodb+srv://admin-juiceybird:BBUbZLsAvL4IV8y6@cluster0.vle6t.mongodb.net/itemsDB", {
@@ -32,11 +29,8 @@ const listSchema = new mongoose.Schema({
 })
 
 const postSchema = new mongoose.Schema({
-
   title: String,
-
   content: String
-
 });
 
 const userSchema = new mongoose.Schema({
@@ -67,16 +61,14 @@ const item4 = new Item({
 const defaultItems = [item1, item2, item3, item4]
 
 app.route("/list")
-
   .get(function(req, res) {
-
     Item.find({}, function(err, foundItems) {
       if (foundItems.length === 0) {
         Item.insertMany(defaultItems, function(err) {
           if (err) {
             console.log(err);
           } else {
-            console.log("Succesfully saved all items to DB");
+            console.log("You deleted everything. Thus, restoring default entries for demo purpose!");
           }
         });
         res.redirect("/list");
@@ -90,14 +82,11 @@ app.route("/list")
   })
 
   .post(function(req, res) {
-
     const itemName = req.body.newItem;
     const listName = req.body.list;
-
     const item = new Item({
       name: itemName
     });
-
     if (listName === "Today") {
       item.save();
       res.redirect("/list");
@@ -113,18 +102,14 @@ app.route("/list")
   });
 
 app.route("/compose")
-
   .get(function(req, res) {
     res.render("compose");
   })
-
   .post(function(req, res) {
     const post = new Post({
       title: req.body.postTitle,
       content: req.body.postBody
     });
-
-
     post.save(function(err) {
       if (!err) {
         res.redirect("/blog");
@@ -132,9 +117,7 @@ app.route("/compose")
     });
   });
 
-
 app.get("/blog", function(req, res) {
-
   Post.find({}, function(err, posts) {
     res.render("blog", {
       startingContent: homeStartingContent,
@@ -144,9 +127,7 @@ app.get("/blog", function(req, res) {
 });
 
 app.get("/posts/:postId", function(req, res) {
-
   const requestedPostId = req.params.postId;
-
   Post.findOne({
     _id: requestedPostId
   }, function(err, post) {
@@ -160,7 +141,6 @@ app.get("/posts/:postId", function(req, res) {
 
 app.get("/list/:customListName", function(req, res) {
   const customListName =  _.capitalize(req.params.customListName);
-
   List.findOne({
     name: customListName
   }, function(err, foundList) {
