@@ -205,9 +205,9 @@ app.get("/about", function(req, res) {
   res.render("about");
 });
 
-// app.get("/stories", function(req, res) {
-//   res.render("stories");
-// });
+app.get("/stories", function(req, res) {
+  res.render("stories");
+});
 
 app.get("/contact", function(req, res) {
   res.render("contact");

@@ -38,8 +38,13 @@ input[type="checkbox"] {
   margin: 20px;
 }
 
+.story {
+  word-spacing: 2%;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
 p {
-  margin: 0;
   padding: 2rem;
   font-size: 20px;
   font-weight: 200;

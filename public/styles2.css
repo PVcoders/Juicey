@@ -3,7 +3,7 @@
 }
 
 html {
-  background-color: #E8ECEF;
+  background-color: #00adb5;
   height: 100%;
   width: 100%;
   position: relative;
@@ -15,9 +15,32 @@ a {
   color: white;
 }
 
+footer {
+  background-color: #00adb5;
+  background-image: url("https://www.transparenttextures.com/patterns/cutcube.png");
+}
+
+.form-control {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  align-self: center;
+}
+
+.compose {
+  text-align: left;
+  background-color: #00adb5;
+  background-image: url("https://www.transparenttextures.com/patterns/cutcube.png");
+}
+
 .container-fluid {
   padding-top: 70px;
   padding-bottom: 70px;
+}
+
+p {
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .navbar {
