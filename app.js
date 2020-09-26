@@ -6,50 +6,50 @@ const mongoose = require("mongoose");
 const homeStartingContent = "WELCOME TO THE BLOG OF TEDTUBE. I WILL POST UPDATES NOW AND THEN.";
 const app = express();
 app.use(bodyParser.urlencoded({
-extended: true
+  extended: true
 }));
 
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 mongoose.connect("mongodb+srv://admin-juiceybird:BBUbZLsAvL4IV8y6@cluster0.vle6t.mongodb.net/itemsDB", {
-useNewUrlParser: true,
-useUnifiedTopology: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 })
 
 mongoose.set('useFindAndModify', false);
 
 const itemsSchema = new mongoose.Schema({
-name: String
+  name: String
 });
 
 const listSchema = new mongoose.Schema({
-name: String,
-items: [itemsSchema]
+  name: String,
+  items: [itemsSchema]
 })
 
 const postSchema = new mongoose.Schema({
-title: String,
-content: String
+  title: String,
+  content: String
 });
 
 const List = new mongoose.model("List", listSchema)
 const Item = new mongoose.model("Item", itemsSchema);
 const Post = new mongoose.model("Post", postSchema);
 const item1 = new Item({
-name: "Welcome to your to do list!"
+  name: "Welcome to your to do list!"
 })
 
 const item2 = new Item({
-name: "Hit the + button to add an item."
+  name: "Hit the + button to add an item."
 })
 
 const item3 = new Item({
-name: "<-- Hit this to delete a item."
+  name: "<-- Hit this to delete a item."
 })
 
 const item4 = new Item({
-name: "If you want to go to the search bar at the end do / and then what ever you want for the title of the to do list you will generate by hitting enter or return. You do not need to capitalize your list title."
+  name: "If you want to go to the search bar at the end do / and then what ever you want for the title of the to do list you will generate by hitting enter or return. You do not need to capitalize your list title."
 })
 
 const defaultItems = [item1, item2, item3, item4]
@@ -134,7 +134,7 @@ app.get("/posts/:postId", function(req, res) {
 });
 
 app.get("/list/:customListName", function(req, res) {
-  const customListName =  _.capitalize(req.params.customListName);
+  const customListName = _.capitalize(req.params.customListName);
   List.findOne({
     name: customListName
   }, function(err, foundList) {
@@ -189,7 +189,7 @@ app.post("/delete", function(req, res) {
 
 });
 
-app.get("/", function(req, res){
+app.get("/", function(req, res) {
   res.render("home");
 })
 
@@ -212,6 +212,22 @@ app.get("/stories", function(req, res) {
 app.get("/contact", function(req, res) {
   res.render("contact");
 });
+
+app.get("/code", function(req, res) {
+res.render("code")
+})
+
+app.get("/code/html", function(req, res) {
+  res.render("html");
+})
+
+app.get("/code/css", function(req, res) {
+  res.render("css");
+})
+
+app.get("/code/start", function(req, res) {
+  res.render("start");
+})
 
 let port = process.env.PORT;
 if (port == null || port == "") {

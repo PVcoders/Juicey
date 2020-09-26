@@ -96,6 +96,14 @@ footer {
   animation: glow 1s ease-in-out infinite alternate;
 }
 
+.fas, .bi {
+  color: #5eaaa8;
+}
+
+.fas:hover, .bi:hover {
+  color: #056676;
+}
+
 .footer-link:hover {
   animation-name: shake;
   animation: shake;
@@ -465,9 +473,44 @@ footer {
 }
 
 .white:hover {
-  color: #fff;
+  color: #c4c3c3;
 }
 
 .smallFont {
   font-size: 1rem;
+}
+
+.sidenav {
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #5c636e;
+  color: white;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
 }
