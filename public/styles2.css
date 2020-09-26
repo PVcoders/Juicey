@@ -7,7 +7,7 @@ html {
   height: 100%;
   width: 100%;
   position: relative;
-  background-image: url("https://www.transparenttextures.com/patterns/cutcube.png");
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
 a {
@@ -17,7 +17,7 @@ a {
 
 footer {
   background-color: #00adb5;
-  background-image: url("https://www.transparenttextures.com/patterns/cutcube.png");
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
 .form-control {
@@ -30,7 +30,7 @@ footer {
 .compose {
   text-align: left;
   background-color: #00adb5;
-  background-image: url("https://www.transparenttextures.com/patterns/cutcube.png");
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
 .container-fluid {
@@ -46,16 +46,12 @@ p {
 .navbar {
   padding-top: 15px;
   padding-bottom: 15px;
+  border: 0;
   border-radius: 0;
   margin-bottom: 0;
   font-size: 12px;
   letter-spacing: 5px;
 }
-
-.navbar-nav li a:hover {
-  color: #1abc9c;
-}
-
 .footer {
   position: absolute;
   bottom: 0;
