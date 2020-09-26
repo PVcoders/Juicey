@@ -229,6 +229,10 @@ app.get("/code/start", function(req, res) {
   res.render("start");
 })
 
+app.get("/code/help", function(req, res) {
+  res.render("start");
+})
+
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
