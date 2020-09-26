@@ -95,7 +95,7 @@ app.route("/list")
     }
   });
 
-app.route("/compose")
+app.route("/blog/compose")
   .get(function(req, res) {
     res.render("compose");
   })
@@ -120,7 +120,7 @@ app.get("/blog", function(req, res) {
   });
 });
 
-app.get("/posts/:postId", function(req, res) {
+app.get("/blog/posts/:postId", function(req, res) {
   const requestedPostId = req.params.postId;
   Post.findOne({
     _id: requestedPostId
