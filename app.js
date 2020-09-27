@@ -230,7 +230,7 @@ app.get("/code/start", function(req, res) {
 })
 
 app.get("/code/help", function(req, res) {
-  res.render("start");
+  res.render("help");
 })
 
 let port = process.env.PORT;
