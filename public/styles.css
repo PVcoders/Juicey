@@ -4,11 +4,11 @@
 
 html, body {
   background-color: #00adb5;
-  font-family: 'helvetica neue';
+  font-family: Arial, Helvetica, sans-serif;
   height: 100%;
   width: 100%;
   scroll-behavior: smooth;
-  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
