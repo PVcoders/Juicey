@@ -24,7 +24,7 @@ https://github.com/DayDream-Code
 
 https://github.com/Compound-codes
 
-![Logo](documentation/Images/logo-via-logohub)
+![Logo](documentation/Images/logo-via-logohub.png)
 
 # How to Use
 
