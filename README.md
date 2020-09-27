@@ -1,6 +1,6 @@
 # Tedtube
 
-![Tedtube Favicon](documentation/favicon.ico)
+![Tedtube Favicon](documentation/Images/favicon.ico)
 
 # BACKEND-FRONTEND
 
@@ -8,7 +8,23 @@ This website uses the backend and the frontend.
 
 # MANY THINGS
 
-![Many Things](documentation/Links.png)
+![Many Things](documentation/Images/Links.png)
+
+# Introducing: Icons
+
+# Icons by Daydream-Code
+
+https://github.com/DayDream-Code
+
+![Juice by Daydream](documentation/Images/Juicey.png)
+
+![Poley Juice By Daydream](documentation/Images/PoleyJuice.png)
+
+# Icons by Compound-codes
+
+https://github.com/Compound-codes
+
+![Logo](documentation/Images/logo-via-logohub)
 
 # How to Use
 
