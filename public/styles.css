@@ -24,6 +24,10 @@ a {
   margin: 10px 20px;
 }
 
+.dropdown-item {
+  font-size: small;
+}
+
 a.footer-link:hover {
   animation-duration: 3s;
   text-decoration: none;
@@ -94,14 +98,6 @@ footer {
   -webkit-animation: glow 1s ease-in-out infinite alternate;
   -moz-animation: glow 1s ease-in-out infinite alternate;
   animation: glow 1s ease-in-out infinite alternate;
-}
-
-.fas, .bi {
-  color: #5eaaa8;
-}
-
-.fas:hover, .bi:hover {
-  color: #056676;
 }
 
 .footer-link:hover {

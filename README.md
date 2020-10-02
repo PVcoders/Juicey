@@ -50,3 +50,7 @@ please fork this project and ask for updates.
 # My Website
 
 https://tedtube.herokuapp.com
+
+# Update 1.0.1
+
+I have fixed navbar so people without font-awesome can still use the navbar.
