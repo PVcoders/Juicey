@@ -214,23 +214,23 @@ app.get("/contact", function(req, res) {
 });
 
 app.get("/code", function(req, res) {
-res.render("code")
+res.render("code/code")
 })
 
 app.get("/code/html", function(req, res) {
-  res.render("html");
+  res.render("code/html");
 })
 
 app.get("/code/css", function(req, res) {
-  res.render("css");
+  res.render("code/css");
 })
 
 app.get("/code/start", function(req, res) {
-  res.render("start");
+  res.render("code/start");
 })
 
 app.get("/code/help", function(req, res) {
-  res.render("help");
+  res.render("code/help");
 })
 
 let port = process.env.PORT;

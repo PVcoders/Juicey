@@ -20,12 +20,16 @@ h2, h3, h4, h5, h6 {
   line-height: 1.5;
 }
 
-a {
-  margin: 10px 20px;
-}
-
 .dropdown-item {
   font-size: small;
+}
+
+.dropdown-menu {
+  padding: 0, 3%;
+}
+
+a {
+  color: #fff;
 }
 
 a.footer-link:hover {
