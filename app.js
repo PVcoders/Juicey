@@ -23,6 +23,10 @@ const itemsSchema = new mongoose.Schema({
   name: String
 });
 
+const textSchema = new mongoose.Schema({
+  name: String
+});
+
 const listSchema = new mongoose.Schema({
   name: String,
   items: [itemsSchema]
@@ -34,6 +38,7 @@ const postSchema = new mongoose.Schema({
 });
 
 const List = new mongoose.model("List", listSchema)
+const Text = new mongoose.model("Text", textSchema)
 const Item = new mongoose.model("Item", itemsSchema);
 const Post = new mongoose.model("Post", postSchema);
 const item1 = new Item({
@@ -55,10 +60,10 @@ const item4 = new Item({
 const defaultItems = [item1, item2, item3, item4]
 
 app.route("/list")
-  .get(function(req, res) {
-    Item.find({}, function(err, foundItems) {
+  .get(function (req, res) {
+    Item.find({}, function (err, foundItems) {
       if (foundItems.length === 0) {
-        Item.insertMany(defaultItems, function(err) {
+        Item.insertMany(defaultItems, function (err) {
           if (err) {
             console.log(err);
           } else {
@@ -75,7 +80,7 @@ app.route("/list")
     })
   })
 
-  .post(function(req, res) {
+  .post(function (req, res) {
     const itemName = req.body.newItem;
     const listName = req.body.list;
     const item = new Item({
@@ -87,7 +92,7 @@ app.route("/list")
     } else {
       List.findOne({
         name: listName
-      }, function(err, foundList) {
+      }, function (err, foundList) {
         foundList.items.push(item);
         foundList.save();
         res.redirect("/list" + listName);
@@ -95,24 +100,26 @@ app.route("/list")
     }
   });
 
-app.route("/blog/compose")
-  .get(function(req, res) {
-    res.render("compose");
+app.route("/text")
+  .get(function (req, res) {
+    Item.find({}, function (err, foundTexts) {
+      res.render("text", {
+        listTitle: "Today",
+        newTextItems: foundTexts
+      });
+    })
   })
   .post(function(req, res) {
-    const post = new Post({
-      title: req.body.postTitle,
-      content: req.body.postBody
+    const textName = req.body.newText;
+    const text = new Item({
+      name: textName
     });
-    post.save(function(err) {
-      if (!err) {
-        res.redirect("/blog");
-      }
-    });
+    text.save();
+    res.redirect("/list");
   });
 
-app.get("/blog", function(req, res) {
-  Post.find({}, function(err, posts) {
+app.get("/blog", function (req, res) {
+  Post.find({}, function (err, posts) {
     res.render("blog", {
       startingContent: homeStartingContent,
       posts: posts
@@ -120,11 +127,11 @@ app.get("/blog", function(req, res) {
   });
 });
 
-app.get("/blog/posts/:postId", function(req, res) {
+app.get("/blog/posts/:postId", function (req, res) {
   const requestedPostId = req.params.postId;
   Post.findOne({
     _id: requestedPostId
-  }, function(err, post) {
+  }, function (err, post) {
     res.render("post", {
       title: post.title,
       content: post.content
@@ -133,11 +140,11 @@ app.get("/blog/posts/:postId", function(req, res) {
 
 });
 
-app.get("/list/:customListName", function(req, res) {
+app.get("/list/:customListName", function (req, res) {
   const customListName = _.capitalize(req.params.customListName);
   List.findOne({
     name: customListName
-  }, function(err, foundList) {
+  }, function (err, foundList) {
     if (!err) {
       if (!foundList) {
         const list = new List({
@@ -159,12 +166,12 @@ app.get("/list/:customListName", function(req, res) {
   })
 })
 
-app.post("/delete", function(req, res) {
+app.post("/delete", function (req, res) {
   const checkedItemId = req.body.checkbox;
   const listName = req.body.listName;
 
   if (listName === "Today") {
-    Item.findByIdAndRemove(checkedItemId, function(err) {
+    Item.findByIdAndRemove(checkedItemId, function (err) {
       if (!err) {
         console.log("Successfully deleted checked item.");
         res.redirect("/list");
@@ -179,7 +186,7 @@ app.post("/delete", function(req, res) {
           _id: checkedItemId
         }
       }
-    }, function(err, foundList) {
+    }, function (err, foundList) {
       if (!err) {
         res.redirect("/list/" + listName);
       }
@@ -189,47 +196,47 @@ app.post("/delete", function(req, res) {
 
 });
 
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.render("home");
 })
 
-app.get("/tedtube", function(req, res) {
+app.get("/tedtube", function (req, res) {
   res.render("tedtube");
 });
 
-app.get("/credits", function(req, res) {
+app.get("/credits", function (req, res) {
   res.render("credits");
 });
 
-app.get("/about", function(req, res) {
+app.get("/about", function (req, res) {
   res.render("about");
 });
 
-app.get("/stories", function(req, res) {
+app.get("/stories", function (req, res) {
   res.render("stories");
 });
 
-app.get("/contact", function(req, res) {
+app.get("/contact", function (req, res) {
   res.render("contact");
 });
 
-app.get("/code", function(req, res) {
-res.render("code/code")
+app.get("/code", function (req, res) {
+  res.render("code/code")
 })
 
-app.get("/code/html", function(req, res) {
+app.get("/code/html", function (req, res) {
   res.render("code/html");
 })
 
-app.get("/code/css", function(req, res) {
+app.get("/code/css", function (req, res) {
   res.render("code/css");
 })
 
-app.get("/code/start", function(req, res) {
+app.get("/code/start", function (req, res) {
   res.render("code/start");
 })
 
-app.get("/code/help", function(req, res) {
+app.get("/code/help", function (req, res) {
   res.render("code/help");
 })
 
@@ -238,6 +245,6 @@ if (port == null || port == "") {
   port = 3000;
 }
 
-app.listen(port, function() {
+app.listen(port, function () {
   console.log("Frenchfries served on table 3000");
 });
