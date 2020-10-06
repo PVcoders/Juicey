@@ -23,10 +23,6 @@ const itemsSchema = new mongoose.Schema({
   name: String
 });
 
-const textSchema = new mongoose.Schema({
-  name: String
-});
-
 const listSchema = new mongoose.Schema({
   name: String,
   items: [itemsSchema]
@@ -38,7 +34,6 @@ const postSchema = new mongoose.Schema({
 });
 
 const List = new mongoose.model("List", listSchema)
-const Text = new mongoose.model("Text", textSchema)
 const Item = new mongoose.model("Item", itemsSchema);
 const Post = new mongoose.model("Post", postSchema);
 const item1 = new Item({
@@ -98,24 +93,6 @@ app.route("/list")
         res.redirect("/list" + listName);
       });
     }
-  });
-
-app.route("/text")
-  .get(function (req, res) {
-    Item.find({}, function (err, foundTexts) {
-      res.render("text", {
-        listTitle: "Today",
-        newTextItems: foundTexts
-      });
-    })
-  })
-  .post(function(req, res) {
-    const textName = req.body.newText;
-    const text = new Item({
-      name: textName
-    });
-    text.save();
-    res.redirect("/list");
   });
 
 app.get("/blog", function (req, res) {
