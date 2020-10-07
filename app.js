@@ -104,6 +104,26 @@ app.get("/blog", function (req, res) {
   });
 });
 
+app.route("/blog/compose")
+
+  .get(function (req, res) {
+    res.render("compose");
+  })
+
+  .post(function (req, res) {
+    const post = new Post({
+      title: req.body.postTitle,
+      content: req.body.postBody
+    });
+
+
+    post.save(function (err) {
+      if (!err) {
+        res.redirect("/blog");
+      }
+    });
+  });
+
 app.get("/blog/posts/:postId", function (req, res) {
   const requestedPostId = req.params.postId;
   Post.findOne({
@@ -196,6 +216,26 @@ app.get("/stories", function (req, res) {
 app.get("/contact", function (req, res) {
   res.render("contact");
 });
+
+app.get("/code", function (req, res) {
+  res.render("code/code")
+})
+
+app.get("/code/html", function (req, res) {
+  res.render("code/html");
+})
+
+app.get("/code/css", function (req, res) {
+  res.render("code/css");
+})
+
+app.get("/code/start", function (req, res) {
+  res.render("code/start");
+})
+
+app.get("/code/help", function (req, res) {
+  res.render("code/help");
+})
 
 let port = process.env.PORT;
 if (port == null || port == "") {
