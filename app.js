@@ -197,26 +197,6 @@ app.get("/contact", function (req, res) {
   res.render("contact");
 });
 
-app.get("/code", function (req, res) {
-  res.render("code/code")
-})
-
-app.get("/code/html", function (req, res) {
-  res.render("code/html");
-})
-
-app.get("/code/css", function (req, res) {
-  res.render("code/css");
-})
-
-app.get("/code/start", function (req, res) {
-  res.render("code/start");
-})
-
-app.get("/code/help", function (req, res) {
-  res.render("code/help");
-})
-
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
