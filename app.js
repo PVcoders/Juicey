@@ -4,6 +4,14 @@ const _ = require("lodash");
 const mongoose = require("mongoose");
 
 const homeStartingContent = "WELCOME TO THE BLOG OF TEDTUBE. I WILL POST UPDATES NOW AND THEN.";
+
+//books
+const chapter1YehTedtube = "  Mr. Frenchfries was busy enjoying his potato soup...  When suddenly... Boom! He was also Lazr Potato! He knew who this was, Dr.Hamborger! The menacing bad guy he was fighting for weeks. This was his most villainous day ever. He called his friend: HOODIE RYAN! They needed their supplies: quicksand, and smores. They piled the sand on the step Dr.Hamborger’ s robot It sank a little but it quickly got up! They needed more quicksand but where would they find more ? "
+const chapter2Part1YehTedtube = "  Lazr Potato thought with Blue Raspberry Boy they found out, in quicksand world! They set out to find quicksand world. They were greeted by many fans. Their fans gave them helpful stuff on their quest. Compass, a costume, and some fast food. They made a rocket out of spare parts. They were finally ready for their trip...  "
+const chapter2Part2YehTedtube = "  2 hours later, they were halfway on their trip when, 'Self destructing in 10,9,8... ' Lazr potato was sleeping and his head pressed the button! What would Blue Raspberry boy do? "
+const chapter3YehTedtube = "He threw Lazr Potato in a tiny recovery ship. He also got in too. He had to drive now. He let lazr potato sleep in the back. Now they are going to quicksand world."
+const chapter4YehTedtube = "  “We’re here lazr potato wake UP!” Said Blue raspberry boy, they were, where they thought was quicksand world. Little did they know it was a Hamborger asteroid. Lazr potato searched the place and found it. The super secret spy place, he’d heard of it. He looked in the window with his partner, he saw JG he was tied up! "
+
 const app = express();
 app.use(bodyParser.urlencoded({
   extended: true
@@ -210,32 +218,18 @@ app.get("/about", function (req, res) {
 });
 
 app.get("/stories", function (req, res) {
-  res.render("stories");
+  res.render("stories", {
+    chapter1YehTedtube: chapter1YehTedtube,
+    chapter2Part1YehTedtube: chapter2Part1YehTedtube,
+    chapter2Part2YehTedtube: chapter2Part2YehTedtube,
+    chapter3YehTedtube: chapter3YehTedtube,
+    chapter4YehTedtube: chapter4YehTedtube
+  });
 });
 
 app.get("/contact", function (req, res) {
   res.render("contact");
 });
-
-app.get("/code", function (req, res) {
-  res.render("code/code")
-})
-
-app.get("/code/html", function (req, res) {
-  res.render("code/html");
-})
-
-app.get("/code/css", function (req, res) {
-  res.render("code/css");
-})
-
-app.get("/code/start", function (req, res) {
-  res.render("code/start");
-})
-
-app.get("/code/help", function (req, res) {
-  res.render("code/help");
-})
 
 let port = process.env.PORT;
 if (port == null || port == "") {

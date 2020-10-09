@@ -105,7 +105,7 @@ footer {
 .glow {
   font-size: 80px;
   color: #d3d3d3;
-  
+
   -webkit-animation: glow 1s ease-in-out infinite alternate;
   -moz-animation: glow 1s ease-in-out infinite alternate;
   animation: glow 1s ease-in-out infinite alternate;
