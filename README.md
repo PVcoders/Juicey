@@ -113,17 +113,11 @@ Phone users may use now.
 
 Removed Credits from navbar.
 
-Created Readme.md.
-
-Updated Readme.
-
 # Date: 9/20/20
 
 Finished Favicon.
 
 Removed Stories.
-
-Updated Readme.
 
 Removed Texts.
 
@@ -138,8 +132,6 @@ Added Code.ejs and other code documentation.
 # Date: 9/27/20
 
 Fixed Font
-
-Updated Readme
 
 # Date: 10/06/20
 
@@ -166,3 +158,7 @@ Simplified Stories
 # Date: 10/11/20
 
 Added Articles
+
+# Date: 10/12/20
+
+Changed CSS
