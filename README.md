@@ -12,14 +12,6 @@ This website uses the backend and the frontend.
 
 # Introducing: Icons
 
-# Icons by Daydream-Code
-
-https://github.com/DayDream-Code
-
-![Juice by Daydream](documentation/Images/Juicey.png)
-
-![Poley Juice By Daydream](documentation/Images/PoleyJuice.png)
-
 # Icons by Compound-codes
 
 https://github.com/Compound-codes
@@ -51,104 +43,126 @@ please fork this project and ask for updates.
 
 https://tedtube.herokuapp.com
 
-# Update 1.0.0
-
-Date: 8/31/20
+# Date: 8/31/20
 
 Uploaded on github.
 
-# Update 1.0.1
-
-Date: 8/31/20
-
 Removed login and signup.
-
-# Update 1.0.2
-
-Date: 8/31/20
 
 Fixed home page in app.js.
 
-# Update 1.0.3
-
-Date: 8/31/20
-
 Turned Secrets to Texts.
-
-# Update 1.0.4
-
-Date: 8/31/20
 
 Added constant to userSchema.
 
-# Update 1.0.5
-
-Date: 8/31/20
-
 Removed texts.
 
-# Update 1.0.6
-
-Date: 9/01/20
+# Date: 9/01/20
 
 Changed Compound-codes to Juicey.
 
-# Update 1.0.7
-
-Date: 9/01/20
-
 Changed CSS.
-
-# Update 1.0.8
-
-Date: 9/01/20
 
 Restored texts.
 
-# Update 1.0.9
-
-Date: 9/01/20
-
 Changed where defaultItems are.
-
-# Update 1.1.0
-
-Date: 9/01/20
 
 Removed texts again.
 
-# Update 1.1.1
-
-Date: 9/01/20
-
 Added React.
 
-# Update 1.1.2
-
-Date: 9/06/20
+# Date: 9/06/20
 
 Removed contenteditable attribute.
 
-<!-- # Update ?.?.? 
+# Date: 9/07/20
 
-Date: 10/02/20
+Put contenteditable attribute back on.
 
-I have fixed navbar so people without font-awesome can still use the navbar.
+Changed CSS
 
-# Update ?.?.? 
+# Date: 9/15/20
 
-Date: 10/06/20
+Using React.
 
-Deleted Code Part. Will put on blog.
+Removed React.
 
-# Update ?.?.?
+Removed About page.
 
-Date: 10/06/20
+# Date: 9/16/20
 
-Fixed Glow
+Put About page back in.
 
-# Update ?.?.?
+Added Favicon.
 
-Date: 10/07/20
+# Date: 9/17/20
 
-Simplifying Stories -->
+Changed Favicon.
+
+Changed Favicon again.
+
+Finished Favicon?
+
+# Date: 9/19/20
+
+Changed Favicon.
+
+Added Stories.
+
+Phone users may use now.
+
+Removed Credits from navbar.
+
+Created Readme.md.
+
+Updated Readme.
+
+# Date: 9/20/20
+
+Finished Favicon.
+
+Removed Stories.
+
+Updated Readme.
+
+Removed Texts.
+
+# Date: 9/21/20
+
+Restored Stories.
+
+# Date: 9/26/20
+
+Added Code.ejs and other code documentation.
+
+# Date: 9/27/20
+
+Fixed Font
+
+Updated Readme
+
+# Date: 10/06/20
+
+Restored Texts
+
+Added index.js
+
+Deleted Texts
+
+Deleted Code.ejs and code documentation
+
+# Date: 10/07/20
+
+Restored Compose
+
+# Date: 10/08/20
+
+Made Glow.
+
+# Date: 10/09/20
+
+Simplified Stories
+
+# Date: 10/11/20
+
+Added Articles

@@ -4,7 +4,7 @@
 
 html,
 body {
-  background-color: #00adb5;
+  background-color: #658361;
   font-family: Arial, Helvetica, sans-serif;
   height: 100%;
   width: 100%;
@@ -98,6 +98,10 @@ footer {
   opacity: 1;
 }
 
+.height2 {
+  height: 7%;
+}
+
 .wordDocument {
   width: 100%;
 }
@@ -126,7 +130,7 @@ footer {
 }
 
 .jumbotron {
-  background-color: #00adb5;
+  background-color: #658361;
   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
   opacity: 0.8;
 }

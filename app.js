@@ -2,8 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const _ = require("lodash");
 const mongoose = require("mongoose");
-const request = require("request")
-const https = require("https")
 
 const homeStartingContent = "WELCOME TO THE BLOG OF TEDTUBE. I WILL POST UPDATES NOW AND THEN.";
 
@@ -46,10 +44,11 @@ const postSchema = new mongoose.Schema({
 const articleSchema = {
   _id: Number,
   name: String,
-  status: String
+  status: String,
+  looks: String
 }
 
-const Article = mongoose.model("Article", articleSchema);
+const Article = new mongoose.model("Article", articleSchema);
 const List = new mongoose.model("List", listSchema)
 const Item = new mongoose.model("Item", itemsSchema);
 const Post = new mongoose.model("Post", postSchema);
@@ -71,7 +70,7 @@ const item4 = new Item({
 
 const defaultItems = [item1, item2, item3, item4]
 
-app.route("/articles")
+app.route("/articles/wiki")
 
   .get(function(req, res) {
     Article.find(function(err, foundArticles) {
@@ -87,7 +86,8 @@ app.route("/articles")
     const newArticle = new Article({
       _id: req.body.id,
       name: req.body.name,
-      status: req.body.status
+      status: req.body.status,
+      looks: req.body.looks
     });
 
     newArticle.save(function(err) {
@@ -109,7 +109,7 @@ app.route("/articles")
     })
   });
 
-app.route("/articles/:articleTitle")
+app.route("/articles/wiki/:articleTitle")
 
   .get(function(req, res) {
 
@@ -119,7 +119,7 @@ app.route("/articles/:articleTitle")
       if (foundArticle) {
         res.send(foundArticle)
       } else {
-        res.send("No articles matching that title was found. Frenchy became sad.")
+        res.send("No articles matching that title was found. Frenchy is sad.")
       }
     })
 
@@ -131,7 +131,8 @@ app.route("/articles/:articleTitle")
       }, {
         _id: req.body.id,
         name: req.body.name,
-        status: req.body.status
+        status: req.body.status,
+        looks: req.body.looks
       }, {
         overwrite: true
       },
@@ -333,6 +334,10 @@ app.get("/stories", function (req, res) {
     chapter4YehTedtube: chapter4YehTedtube
   });
 });
+
+app.get("/articles", function(req, res) {
+  res.render("articles")
+})
 
 app.get("/contact", function (req, res) {
   res.render("contact");
