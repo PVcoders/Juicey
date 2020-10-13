@@ -44,8 +44,7 @@ const postSchema = new mongoose.Schema({
 const articleSchema = {
   _id: Number,
   name: String,
-  status: String,
-  looks: String
+  status: String
 }
 
 const Article = new mongoose.model("Article", articleSchema);
@@ -86,8 +85,7 @@ app.route("/articles/wiki")
     const newArticle = new Article({
       _id: req.body.id,
       name: req.body.name,
-      status: req.body.status,
-      looks: req.body.looks
+      status: req.body.status
     });
 
     newArticle.save(function(err) {
@@ -131,8 +129,7 @@ app.route("/articles/wiki/:articleTitle")
       }, {
         _id: req.body.id,
         name: req.body.name,
-        status: req.body.status,
-        looks: req.body.looks
+        status: req.body.status
       }, {
         overwrite: true
       },

@@ -162,3 +162,5 @@ Added Articles
 # Date: 10/12/20
 
 Changed CSS
+
+Changed articles (If git cloned, then will be able to use on your on your server plus /articles/wiki).
