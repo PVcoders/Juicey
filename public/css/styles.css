@@ -38,6 +38,10 @@ a {
   color: #fff;
 }
 
+a:hover {
+  color: #c4c3c3;
+}
+
 a.footer-link:hover {
   animation-duration: 3s;
   text-decoration: none;
@@ -124,7 +128,7 @@ footer {
 }
 
 .round-button {
-  border-radius: 50%;
+  border-radius: 100%;
   color: black;
   font-weight: 500;
 }
@@ -487,14 +491,6 @@ footer {
   to {
     text-shadow: 0 0 20px #fff, 0 0 30px #209b88, 0 0 40px #209b88, 0 0 50px #209b88, 0 0 60px #209b88, 0 0 70px #209b88, 0 0 80px #209b88;
   }
-}
-
-.white {
-  color: #fff;
-}
-
-.white:hover {
-  color: #c4c3c3;
 }
 
 .rounded {
