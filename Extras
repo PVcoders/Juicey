@@ -1,0 +1,42 @@
+<!-- Extras
+
+app.post("/calculator", function (req, res) {
+var addNumber1 = Number(req.body.addNumber1)
+var addNumber2 = Number(req.body.addNumber2)
+var addResult = addNumber1 + addNumber2
+res.send("Your result is " + addResult)
+var subtractNumber1 = Number(req.body.subtractNumber1)
+var subtractNumber2 = Number(req.body.subtractNumber2)
+var subtractResult = subtractNumber1 - subtractNumber2
+res.send("Your result is " + subtractResult)
+var multiplyNumber1 = Number(req.body.multiplyNumber1)
+var multiplyNumber2 = Number(req.body.multiplyNumber2)
+var multiplyResult = multiplyNumber1 * multiplyNumber2
+res.send("Your result is " + multiplyResult)
+var divideNumber1 = Number(req.body.divideNumber1)
+var divideNumber2 = Number(req.body.divideNumber2)
+var divideResult = divideNumber1 / divideNumber2
+res.send("Your result is " + divideResult)
+})
+
+<div class="jumbotron centered">
+    <div class="container">
+        <form action="/calculator" method="post">
+            <input type="text" name="addNumber1" placeholder="First number"> + <input type="text" name="addNumber2"
+                placeholder="Next number">
+            <button type="submit">Calculate</button>
+            <br>
+            <input type="text" name="divideNumber1" placeholder="First number"> ÷ <input type="text"
+                name="divideNumber2" placeholder="Next number">
+            <button type="submit">Calculate</button>
+            <br>
+            <input type="text" name="subtractNumber1" placeholder="First number"> - <input type="text"
+                name="subtractNumber2" placeholder="Next number">
+            <button type="submit">Calculate</button>
+            <br>
+            <input type="text" name="multiplyNumber1" placeholder="First number"> X <input type="text"
+                name="multiplyNumber2" placeholder="Next number">
+            <button type="submit">Calculate</button>
+        </form>
+    </div>
+</div> --> 

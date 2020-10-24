@@ -71,8 +71,8 @@ const defaultItems = [item1, item2, item3, item4]
 
 app.route("/articles/wiki")
 
-  .get(function(req, res) {
-    Article.find(function(err, foundArticles) {
+  .get(function (req, res) {
+    Article.find(function (err, foundArticles) {
       if (!err) {
         res.send(foundArticles)
       } else {
@@ -81,14 +81,14 @@ app.route("/articles/wiki")
     })
   })
 
-  .post(function(req, res) {
+  .post(function (req, res) {
     const newArticle = new Article({
       _id: req.body.id,
       name: req.body.name,
       status: req.body.status
     });
 
-    newArticle.save(function(err) {
+    newArticle.save(function (err) {
       if (!err) {
         res.send("Succesfully add new article!")
       } else {
@@ -97,8 +97,8 @@ app.route("/articles/wiki")
     })
   })
 
-  .delete(function(req, res) {
-    Article.deleteMany(function(err) {
+  .delete(function (req, res) {
+    Article.deleteMany(function (err) {
       if (!err) {
         res.send("Succesfully deleted all articles.")
       } else {
@@ -109,11 +109,11 @@ app.route("/articles/wiki")
 
 app.route("/articles/wiki/:articleTitle")
 
-  .get(function(req, res) {
+  .get(function (req, res) {
 
     Article.findOne({
       _id: req.params.articleTitle
-    }, function(err, foundArticle) {
+    }, function (err, foundArticle) {
       if (foundArticle) {
         res.send(foundArticle)
       } else {
@@ -123,7 +123,7 @@ app.route("/articles/wiki/:articleTitle")
 
   })
 
-  .put(function(req, res) {
+  .put(function (req, res) {
     Article.updateOne({
         _id: req.params.articleTitle
       }, {
@@ -133,20 +133,20 @@ app.route("/articles/wiki/:articleTitle")
       }, {
         overwrite: true
       },
-      function(err) {
+      function (err) {
         if (!err) {
           res.send("Succesfully updated article!")
         }
       })
   })
 
-  .patch(function(req, res) {
+  .patch(function (req, res) {
     Article.updateOne({
         _id: req.params.articleTitle
       }, {
         $set: req.body
       },
-      function(err) {
+      function (err) {
         if (!err) {
           res.send("Succesfully updated article")
         } else {
@@ -155,10 +155,10 @@ app.route("/articles/wiki/:articleTitle")
       })
   })
 
-  .delete(function(req, res) {
+  .delete(function (req, res) {
     Article.deleteOne({
       _id: req.params.articleTitle
-    }, function(err) {
+    }, function (err) {
       if (!err) {
         res.send("Succesfully deleted article")
       } else {
@@ -306,6 +306,89 @@ app.post("/delete", function (req, res) {
 
 });
 
+//calculator
+
+app.route("/calculator/add")
+
+  .get(function (req, res) {
+    res.render("calculator/add")
+  })
+
+  .post(function (req, res) {
+    var addNumber1 = Number(req.body.addNumber1)
+    var addNumber2 = Number(req.body.addNumber2)
+    var addResult = addNumber1 + addNumber2
+    res.send("Your result is " + addResult)
+  });
+
+app.route("/calculator/subtract")
+
+  .get(function (req, res) {
+    res.render("calculator/subtract")
+  })
+
+  .post(function (req, res) {
+    var subtractNumber1 = Number(req.body.subtractNumber1)
+    var subtractNumber2 = Number(req.body.subtractNumber2)
+    var subtractResult = subtractNumber1 - subtractNumber2
+    res.send("Your result is " + subtractResult)
+  });
+
+app.route("/calculator/multiply")
+
+  .get(function (req, res) {
+    res.render("calculator/multiply")
+  })
+
+  .post(function (req, res) {
+    var multiplyNumber1 = Number(req.body.multiplyNumber1)
+    var multiplyNumber2 = Number(req.body.multiplyNumber2)
+    var multiplyResult = multiplyNumber1 * multiplyNumber2
+    res.send("Your result is " + multiplyResult)
+  });
+
+app.route("/calculator/divide")
+
+  .get(function (req, res) {
+    res.render("calculator/divide")
+  })
+
+  .post(function (req, res) {
+    var divideNumber1 = Number(req.body.divideNumber1)
+    var divideNumber2 = Number(req.body.divideNumber2)
+    var divideResult = divideNumber1 / divideNumber2
+    res.send("Your result is " + divideResult)
+  });
+
+app.route("/calculator/remainder")
+
+  .get(function (req, res) {
+    res.render("calculator/remainder")
+  })
+
+  .post(function (req, res) {
+    var remainderNumber1 = Number(req.body.remainderNumber1)
+    var remainderNumber2 = Number(req.body.remainderNumber2)
+    var remainderResult = remainderNumber1 % remainderNumber2
+    res.send("Your result is " + remainderResult)
+  });
+
+app.route("/calculator/exponents")
+
+  .get(function (req, res) {
+    res.render("calculator/exponents")
+  })
+
+  .post(function (req, res) {
+    var exponentsNumber1 = Number(req.body.exponentsNumber1)
+    var exponentsNumber2 = Number(req.body.exponentsNumber2)
+    var exponentsResult = exponentsNumber1**exponentsNumber2
+    res.send("Your result is " + exponentsResult)
+  });
+app.get("/calculator", function (req, res) {
+  res.render("calculator/calculator")
+})
+
 app.get("/", function (req, res) {
   res.render("home");
 })
@@ -332,7 +415,7 @@ app.get("/stories", function (req, res) {
   });
 });
 
-app.get("/articles", function(req, res) {
+app.get("/articles", function (req, res) {
   res.render("articles")
 })
 

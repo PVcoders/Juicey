@@ -1,0 +1,13 @@
+<%- include("../partials/header") %>
+<div class="jumbotron centered">
+    <div class="container">
+        <form action="/calculator/remainder" method="post">
+            <input type="text" name="remainderNumber1" placeholder="First number"> / <input type="text" name="remainderNumber2"
+                placeholder="Next number">
+            <button type="submit">Calculate</button>
+            <p>Quick Note: Will only show remainder.</p>
+        </form>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>
