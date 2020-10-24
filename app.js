@@ -370,7 +370,11 @@ app.route("/calculator/remainder")
     var remainderNumber1 = Number(req.body.remainderNumber1)
     var remainderNumber2 = Number(req.body.remainderNumber2)
     var remainderResult = remainderNumber1 % remainderNumber2
-    res.send("Your result is " + remainderResult)
+    if (remainderNumber1 < remainderNumber2) {
+      res.send("Does not work.")
+    } else {
+      res.send("Your result is " + remainderResult)
+    }
   });
 
 app.route("/calculator/exponents")
@@ -382,7 +386,7 @@ app.route("/calculator/exponents")
   .post(function (req, res) {
     var exponentsNumber1 = Number(req.body.exponentsNumber1)
     var exponentsNumber2 = Number(req.body.exponentsNumber2)
-    var exponentsResult = exponentsNumber1**exponentsNumber2
+    var exponentsResult = exponentsNumber1 ** exponentsNumber2
     res.send("Your result is " + exponentsResult)
   });
 app.get("/calculator", function (req, res) {
