@@ -164,3 +164,7 @@ Added Articles
 Changed CSS
 
 Changed articles (If git cloned, then will be able to use on your on your server plus /articles/wiki).
+
+# Date: 10/24/20
+
+Added Calculators and Extra

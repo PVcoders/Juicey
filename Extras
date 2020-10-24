@@ -1,4 +1,4 @@
-<!-- Extras
+Extras
 
 app.post("/calculator", function (req, res) {
 var addNumber1 = Number(req.body.addNumber1)
@@ -39,4 +39,4 @@ res.send("Your result is " + divideResult)
             <button type="submit">Calculate</button>
         </form>
     </div>
-</div> --> 
+</div>
