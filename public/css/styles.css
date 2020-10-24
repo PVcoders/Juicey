@@ -4,7 +4,7 @@
 
 html,
 body {
-  background-color: #658361;
+  background-color: #009378;
   height: 100%;
   width: 100%;
   scroll-behavior: smooth;
@@ -77,13 +77,23 @@ button {
 
 input[type="text"] {
   height: 60px;
+  top: 10px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  font-weight: 200;
+  width: 313px;
+}
+
+.calculator input[type="text"] {
+  height: 60px;
   border: none;
   font-weight: 200;
   margin-top: 4%;
   text-align: left;
 }
 
-input[type="text"]:focus {
+.calculator input[type="text"]:focus {
   outline: none;
   box-shadow: inset 0 -3px 0 0 #3a4042;
 }
@@ -135,7 +145,7 @@ footer {
 }
 
 .jumbotron {
-  background-color: #658361;
+  background-color: #009378;
   background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
   opacity: 0.8;
 }
