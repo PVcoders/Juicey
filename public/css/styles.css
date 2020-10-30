@@ -79,7 +79,6 @@ input[type="text"] {
   height: 60px;
   top: 10px;
   border: none;
-  background: transparent;
   font-size: 20px;
   font-weight: 200;
   width: 313px;
@@ -91,6 +90,7 @@ input[type="text"] {
   font-weight: 200;
   margin-top: 4%;
   text-align: left;
+  background-color: white;
 }
 
 .calculator input[type="text"]:focus {
