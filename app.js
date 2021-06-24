@@ -3,15 +3,6 @@ const bodyParser = require("body-parser");
 const _ = require("lodash");
 const mongoose = require("mongoose");
 
-const homeStartingContent = "WELCOME TO THE BLOG OF TEDTUBE. I WILL POST UPDATES NOW AND THEN.";
-
-//books
-const chapter1YehTedtube = "  Mr. Frenchfries was busy enjoying his potato soup...  When suddenly... Boom! He was also Lazr Potato! He knew who this was, Dr.Hamborger! The menacing bad guy he was fighting for weeks. This was his most villainous day ever. He called his friend: HOODIE RYAN! They needed their supplies: quicksand, and smores. They piled the sand on the step Dr.Hamborger’ s robot It sank a little but it quickly got up! They needed more quicksand but where would they find more ? "
-const chapter2Part1YehTedtube = "  Lazr Potato thought with Blue Raspberry Boy they found out, in quicksand world! They set out to find quicksand world. They were greeted by many fans. Their fans gave them helpful stuff on their quest. Compass, a costume, and some fast food. They made a rocket out of spare parts. They were finally ready for their trip...  "
-const chapter2Part2YehTedtube = "  2 hours later, they were halfway on their trip when, 'Self destructing in 10,9,8... ' Lazr potato was sleeping and his head pressed the button! What would Blue Raspberry boy do? "
-const chapter3YehTedtube = "He threw Lazr Potato in a tiny recovery ship. He also got in too. He had to drive now. He let lazr potato sleep in the back. Now they are going to quicksand world."
-const chapter4YehTedtube = "  “We’re here lazr potato wake UP!” Said Blue raspberry boy, they were, where they thought was quicksand world. Little did they know it was a Hamborger asteroid. Lazr potato searched the place and found it. The super secret spy place, he’d heard of it. He looked in the window with his partner, he saw JG he was tied up! "
-
 const app = express();
 app.use(bodyParser.urlencoded({
   extended: true
@@ -36,11 +27,6 @@ const listSchema = new mongoose.Schema({
   items: [itemsSchema]
 })
 
-const postSchema = new mongoose.Schema({
-  title: String,
-  content: String
-});
-
 const articleSchema = {
   _id: Number,
   name: String,
@@ -50,7 +36,6 @@ const articleSchema = {
 const Article = new mongoose.model("Article", articleSchema);
 const List = new mongoose.model("List", listSchema)
 const Item = new mongoose.model("Item", itemsSchema);
-const Post = new mongoose.model("Post", postSchema);
 const item1 = new Item({
   name: "Welcome to your to do list!"
 })
@@ -208,48 +193,6 @@ app.route("/list")
     }
   });
 
-app.get("/blog", function (req, res) {
-  Post.find({}, function (err, posts) {
-    res.render("blog", {
-      startingContent: homeStartingContent,
-      posts: posts
-    });
-  });
-});
-
-app.route("/blog/compose")
-
-  .get(function (req, res) {
-    res.render("compose");
-  })
-
-  .post(function (req, res) {
-    const post = new Post({
-      title: req.body.postTitle,
-      content: req.body.postBody
-    });
-
-
-    post.save(function (err) {
-      if (!err) {
-        res.redirect("/blog");
-      }
-    });
-  });
-
-app.get("/blog/posts/:postId", function (req, res) {
-  const requestedPostId = req.params.postId;
-  Post.findOne({
-    _id: requestedPostId
-  }, function (err, post) {
-    res.render("post", {
-      title: post.title,
-      content: post.content
-    });
-  });
-
-});
-
 app.get("/list/:customListName", function (req, res) {
   const customListName = _.capitalize(req.params.customListName);
   List.findOne({
@@ -306,93 +249,6 @@ app.post("/delete", function (req, res) {
 
 });
 
-//calculator
-
-app.route("/calculator/add")
-
-  .get(function (req, res) {
-    res.render("calculator/add")
-  })
-
-  .post(function (req, res) {
-    var addNumber1 = Number(req.body.addNumber1)
-    var addNumber2 = Number(req.body.addNumber2)
-    var addResult = addNumber1 + addNumber2
-    res.send("Your result is " + addResult)
-  });
-
-app.route("/calculator/subtract")
-
-  .get(function (req, res) {
-    res.render("calculator/subtract")
-  })
-
-  .post(function (req, res) {
-    var subtractNumber1 = Number(req.body.subtractNumber1)
-    var subtractNumber2 = Number(req.body.subtractNumber2)
-    var subtractResult = subtractNumber1 - subtractNumber2
-    res.send("Your result is " + subtractResult)
-  });
-
-app.route("/calculator/multiply")
-
-  .get(function (req, res) {
-    res.render("calculator/multiply")
-  })
-
-  .post(function (req, res) {
-    var multiplyNumber1 = Number(req.body.multiplyNumber1)
-    var multiplyNumber2 = Number(req.body.multiplyNumber2)
-    var multiplyResult = multiplyNumber1 * multiplyNumber2
-    res.send("Your result is " + multiplyResult)
-  });
-
-app.route("/calculator/divide")
-
-  .get(function (req, res) {
-    res.render("calculator/divide")
-  })
-
-  .post(function (req, res) {
-    var divideNumber1 = Number(req.body.divideNumber1)
-    var divideNumber2 = Number(req.body.divideNumber2)
-    var divideResult = divideNumber1 / divideNumber2
-    res.send("Your result is " + divideResult)
-  });
-
-app.route("/calculator/remainder")
-
-  .get(function (req, res) {
-    res.render("calculator/remainder")
-  })
-
-  .post(function (req, res) {
-    var remainderNumber1 = Number(req.body.remainderNumber1)
-    var remainderNumber2 = Number(req.body.remainderNumber2)
-    var remainderResult = remainderNumber1 % remainderNumber2
-    if (remainderNumber1 < remainderNumber2) {
-      res.send("Does not work.")
-    } else {
-      res.send("Your result is " + remainderResult)
-    }
-  });
-
-app.route("/calculator/exponents")
-
-  .get(function (req, res) {
-    res.render("calculator/exponents")
-  })
-
-  .post(function (req, res) {
-    var exponentsNumber1 = Number(req.body.exponentsNumber1)
-    var exponentsNumber2 = Number(req.body.exponentsNumber2)
-    var exponentsResult = exponentsNumber1 ** exponentsNumber2
-    res.send("Your result is " + exponentsResult)
-  });
-app.get("/calculator", function (req, res) {
-  res.render("calculator/calculator")
-})
-
 app.get("/", function (req, res) {
   res.render("home");
 })
@@ -405,27 +261,9 @@ app.get("/credits", function (req, res) {
   res.render("credits");
 });
 
-app.get("/about", function (req, res) {
-  res.render("about");
-});
-
-app.get("/stories", function (req, res) {
-  res.render("stories", {
-    chapter1YehTedtube: chapter1YehTedtube,
-    chapter2Part1YehTedtube: chapter2Part1YehTedtube,
-    chapter2Part2YehTedtube: chapter2Part2YehTedtube,
-    chapter3YehTedtube: chapter3YehTedtube,
-    chapter4YehTedtube: chapter4YehTedtube
-  });
-});
-
 app.get("/articles", function (req, res) {
   res.render("articles")
 })
-
-app.get("/contact", function (req, res) {
-  res.render("contact");
-});
 
 let port = process.env.PORT;
 if (port == null || port == "") {
